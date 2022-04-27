@@ -2,6 +2,7 @@ import React from 'react';
 import MovieList from './MovieList.jsx';
 import MovieListItem from './MovieListItem.jsx';
 import Search from './Search.jsx';
+import InputMovie from './Input.jsx';
 
 class App extends React.Component {
 
@@ -17,7 +18,8 @@ class App extends React.Component {
       ],
       movieSearch: 'Mean Girls'
     }
-    this.organizeMovieList = this.organizeMovieList.bind(this)
+    this.organizeMovieList = this.organizeMovieList.bind(this);
+    this.inputMovieList = this.inputMovieList.bind(this);
   }
 
   organizeMovieList(text) {
@@ -39,11 +41,21 @@ class App extends React.Component {
     })
   }
 
+  inputMovieList(text) {
+    let newMovieList = [text];
+    this.setState({
+      movies: newMovieList
+    })
+  }
+
   render() {
     return (
       <div id="app">
         <div id="search">
           < Search organizeMovieList={this.organizeMovieList}/>
+        </div>
+        <div id="input">
+          < InputMovie inputMovieList={this.inputMovieList}/>
         </div>
         <div id="movieList">
           < MovieList movies={this.state.movies}/>
