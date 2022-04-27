@@ -1,8 +1,10 @@
 import React from 'react';
 import MovieList from './MovieList.jsx';
 import MovieListItem from './MovieListItem.jsx';
+import Search from './MovieListItem.jsx';
 
 class App extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -12,13 +14,22 @@ class App extends React.Component {
         {title: 'The Grey'},
         {title: 'Sunshine'},
         {title: 'Ex Machina'},
-      ]
+      ],
+      movieSearch: 'Mean Girls'
     }
   }
+
+  handleSearch(event) {
+    this.setState({
+      movieSearch: event.target.value
+    })
+  }
+
   render() {
     return (
       <div id="movieList">
          < MovieList movies={this.state.movies}/>
+         <Search />
       </div>
     )
   }
