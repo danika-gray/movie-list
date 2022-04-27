@@ -1,7 +1,7 @@
 import React from 'react';
 import MovieList from './MovieList.jsx';
 import MovieListItem from './MovieListItem.jsx';
-import Search from './MovieListItem.jsx';
+import Search from './Search.jsx';
 
 class App extends React.Component {
 
@@ -27,25 +27,16 @@ class App extends React.Component {
 
   render() {
     return (
-      <div id="movieList">
-         < MovieList movies={this.state.movies}/>
-         <Search />
+      <div id="app">
+        <div id="search">
+          < Search handler={this.handleSearch.bind(this)}/>
+        </div>
+        <div id="movieList">
+          < MovieList movies={this.state.movies}/>
+        </div>
       </div>
     )
   }
-  // render() {
-  //   return (
-  //   <div id = 'Movie List'>
-  //     <ul>
-  //       <li>{movies[0].title}</li>
-  //       <li>{movies[1].title}</li>
-  //       <li>{movies[2].title}</li>
-  //       <li>{movies[3].title}</li>
-  //       <li>{movies[4].title}</li>
-  //     </ul>
-  //   </div>
-  //   );
-  // }
 };
 
 var movies = [

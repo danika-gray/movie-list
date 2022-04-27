@@ -3,31 +3,24 @@ import React from 'react';
 class Search extends React.Component {
   constructor(props) {
     super(props);
-    this.state: {
-      input: '';
+    this.state = {
+      form: 'search movie list'
     }
   }
-  this.handleChange = this.handleChange.bind(this);
-  this.handleSubmit = this.handleSubmit.bind(this);
 
   handleChange(event) {
     this.setState({
-      input: event.target.value
+      form: event.target.value
     })
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
   }
 
   render() {
     return (
-      <form onSubmit = {this.handleSubmit}>
+      <form >
         <label>
-          MovieSearch:
-          <input type="text" value={this.state.value} /* initially '' */ onChange={this.handleChange} />
+          <input type="text" />
         </label>
-        <input type="submit" value="Submit" />
+         <button>search</button>
       </form>
     )
   }
