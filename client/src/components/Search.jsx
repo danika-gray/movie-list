@@ -4,15 +4,24 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      form: 'search movie list'
+      searchTitle: 'search movie list',
+      submission: false
     }
   }
 
   handleChange(event) {
     this.setState({
-      form: event.target.value
+      searchTitle: event.target.value
     })
-    //console.log(this.state)
+    console.log(this.state)
+  }
+
+  handleSubmit() {
+    this.setState({
+      submission: true
+    })
+    console.log(this.state);
+    this.props.handleSearchTitle(this.state.searchTitle)
   }
 
   render() {
@@ -22,7 +31,7 @@ class Search extends React.Component {
           <input type="text" onChange={(event) =>
             this.handleChange(event)} />
         </label>
-         <button>search</button>
+         <button onClick={() => this.handleSubmit}>Go</button>
       </form>
     )
   }

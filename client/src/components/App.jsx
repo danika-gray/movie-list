@@ -19,9 +19,10 @@ class App extends React.Component {
     }
   }
 
-  handleSearch(event) {
+  handleSearchTitle(searchTitle) {
     this.setState({
-      movieSearch: event.target.value
+      // movies: call some function to list movies by search term
+      movieSearch: searchTitle
     })
   }
 
@@ -29,7 +30,7 @@ class App extends React.Component {
     return (
       <div id="app">
         <div id="search">
-          < Search handler={this.handleSearch.bind(this)}/>
+          < Search handler={this.handleSearchTitle.bind(this)}/>
         </div>
         <div id="movieList">
           < MovieList movies={this.state.movies}/>
@@ -39,13 +40,13 @@ class App extends React.Component {
   }
 };
 
-var movies = [
-  {title: 'Mean Girls'},
-  {title: 'Hackers'},
-  {title: 'The Grey'},
-  {title: 'Sunshine'},
-  {title: 'Ex Machina'},
-];
+// var movies = [
+//   {title: 'Mean Girls'},
+//   {title: 'Hackers'},
+//   {title: 'The Grey'},
+//   {title: 'Sunshine'},
+//   {title: 'Ex Machina'},
+// ];
 
 export default App;
 
