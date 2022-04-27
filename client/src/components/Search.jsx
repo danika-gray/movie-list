@@ -4,36 +4,33 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchTitle: 'search movie list',
+      searchTitle: '',
       submission: false
     }
+    this.handleSearchTitle = this.handleSearchTitle.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
     this.setState({
       searchTitle: event.target.value
-    })
-    console.log(this.state)
+    });
   }
 
-  handleSubmit() {
-    this.setState({
-      submission: true
-    })
-    console.log(this.state);
-    this.props.handleSearchTitle(this.state.searchTitle)
+  handleSearchTitle(event) {
+    event.preventDefault();
+    this.props.organizeMovieList(this.state.searchTitle);
   }
 
   render() {
     return (
-      <form >
+      <form onSubmit={this.handleSearchTitle} >
         <label>
-          <input type="text" onChange={(event) =>
-            this.handleChange(event)} />
+          <input type="text" placeholder="search..." value={this.state.searchTitle} onChange={this.handleChange} />
         </label>
-         <button onClick={() => this.handleSubmit}>Go</button>
+         <input type="submit" value="Go!" />
       </form>
-    )
+    );
   }
 }
 

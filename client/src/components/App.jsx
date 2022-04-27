@@ -17,12 +17,25 @@ class App extends React.Component {
       ],
       movieSearch: 'Mean Girls'
     }
+    this.organizeMovieList = this.organizeMovieList.bind(this)
   }
 
-  handleSearchTitle(searchTitle) {
+  organizeMovieList(text) {
     this.setState({
-      // movies: call some function to list movies by search term
-      movieSearch: searchTitle
+      movieSearch: text // working
+    })
+    let organizedList = this.state.movies.slice();
+
+    organizedList = organizedList.filter(function(movie) {
+      let movieTitle = movie.title.toLowerCase();
+      text = text.toLowerCase();
+      if (movieTitle.indexOf(text) > -1) {
+        return true;
+      }
+      return false;
+    });
+    this.setState({
+      movies: organizedList
     })
   }
 
@@ -30,7 +43,7 @@ class App extends React.Component {
     return (
       <div id="app">
         <div id="search">
-          < Search handler={this.handleSearchTitle.bind(this)}/>
+          < Search organizeMovieList={this.organizeMovieList}/>
         </div>
         <div id="movieList">
           < MovieList movies={this.state.movies}/>
