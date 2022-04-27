@@ -1,4 +1,6 @@
-function MovieListItem({movie}) {
+import React from 'react';
+
+const MovieListItem = ({movie}) => {
   return (
     <li>{movie.title}</li>
   );

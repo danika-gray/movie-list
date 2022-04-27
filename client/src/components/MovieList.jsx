@@ -1,7 +1,7 @@
-import MovieListItem from './MovieListItem.js';
+import React from 'react';
+import MovieListItem from './MovieListItem.jsx';
 
-function MovieList(props) {
-  const movies = movies.props;
+const MovieList = ({movies}) => {
   const movieListItems = movies.map((movie) =>
   <MovieListItem movie={movie} /> );
 

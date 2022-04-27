@@ -1,5 +1,6 @@
 import React from 'react';
-import MovieList from './MovieList.js';
+import MovieList from './MovieList.jsx';
+import MovieListItem from './MovieListItem.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class App extends React.Component {
   render() {
     return (
       <div id="movieList">
-         < MovieList movies={this.props.movies}/>
+         < MovieList movies={this.state.movies}/>
       </div>
     )
   }
