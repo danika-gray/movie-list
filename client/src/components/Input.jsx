@@ -20,6 +20,10 @@ class InputMovie extends React.Component {
   handleInputSubmission(event) {
     event.preventDefault();
     this.props.inputMovieList(this.state.input);
+    this.setState({
+      input: '',
+      submission: true
+    })
   }
 
   render() {
@@ -28,7 +32,7 @@ class InputMovie extends React.Component {
         <label>
           <input type="text" placeholder="Add movie title here..." value={this.state.input} onChange={this.handleChange} />
         </label>
-         <input type="submit" value="Go!" />
+         <input type="submit" value="Add" />
       </form>
     );
   }

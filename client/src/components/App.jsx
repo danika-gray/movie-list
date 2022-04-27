@@ -10,13 +10,13 @@ class App extends React.Component {
     super(props);
     this.state = {
       movies: [
-        {title: 'Mean Girls'},
-        {title: 'Hackers'},
-        {title: 'The Grey'},
-        {title: 'Sunshine'},
-        {title: 'Ex Machina'},
+        // {title: 'Mean Girls'},
+        // {title: 'Hackers'},
+        // {title: 'The Grey'},
+        // {title: 'Sunshine'},
+        // {title: 'Ex Machina'},
       ],
-      movieSearch: 'Mean Girls'
+      movieSearch: '' //'Mean Girls'
     }
     this.organizeMovieList = this.organizeMovieList.bind(this);
     this.inputMovieList = this.inputMovieList.bind(this);
@@ -42,7 +42,15 @@ class App extends React.Component {
   }
 
   inputMovieList(text) {
-    let newMovieList = [text];
+    //console.log(text);
+
+    let newMovie = {};
+    newMovie.title = text;
+
+    let newMovieList = this.state.movies.slice();
+    newMovieList.push(newMovie);
+    //console.log(newMovieList);
+
     this.setState({
       movies: newMovieList
     })

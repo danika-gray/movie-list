@@ -20,6 +20,10 @@ class Search extends React.Component {
   handleSearchTitle(event) {
     event.preventDefault();
     this.props.organizeMovieList(this.state.searchTitle);
+    this.setState({
+      searchTitle: '',
+      submission: true,
+    })
   }
 
   render() {
