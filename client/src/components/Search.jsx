@@ -12,13 +12,15 @@ class Search extends React.Component {
     this.setState({
       form: event.target.value
     })
+    //console.log(this.state)
   }
 
   render() {
     return (
       <form >
         <label>
-          <input type="text" />
+          <input type="text" onChange={(event) =>
+            this.handleChange(event)} />
         </label>
          <button>search</button>
       </form>
