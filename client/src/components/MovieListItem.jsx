@@ -1,11 +1,5 @@
 import React from 'react';
 
-// const MovieListItem = ({movie}) => {
-//   return (
-//     <p>{movie.title} <span> <button>watched?</button> </span></p>
-//   )
-// }
-
 class MovieListItem extends React.Component {
   constructor(props) {
     super(props)
@@ -35,3 +29,9 @@ class MovieListItem extends React.Component {
 }
 
 export default MovieListItem;
+
+// const MovieListItem = ({movie}) => {
+//   return (
+//     <p>{movie.title} <span> <button>watched?</button> </span></p>
+//   )
+// }
