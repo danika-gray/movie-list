@@ -2,7 +2,7 @@ import React from 'react';
 
 const MovieListItem = ({movie}) => {
   return (
-    <li>{movie.title}</li>
+    <p>{movie.title} <span> <button>watched</button> </span></p>
   )
 }
 

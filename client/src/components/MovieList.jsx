@@ -6,9 +6,9 @@ const MovieList = ({movies}) => {
   <MovieListItem movie={movie} /> );
 
   return (
-    <ul>
+    <div id="movie list">
       {movieListItems}
-    </ul>
+    </div>
   );
 }
 
