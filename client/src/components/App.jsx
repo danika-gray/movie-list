@@ -22,25 +22,6 @@ class App extends React.Component {
     this.inputMovieList = this.inputMovieList.bind(this);
   }
 
-  // organizeMovieList(text) {
-  //   this.setState({
-  //     movieSearch: text // working
-  //   })
-  //   let organizedList = this.state.movies.slice();
-
-  //   organizedList = organizedList.filter(function(movie) {
-  //     let movieTitle = movie.title.toLowerCase();
-  //     text = text.toLowerCase();
-  //     if (movieTitle.indexOf(text) > -1) {
-  //       return true;
-  //     }
-  //     return false;
-  //   });
-  //   this.setState({
-  //     movies: organizedList
-  //   })
-  // }
-
   organizeMovieList(event) {
     event.preventDefault();
     this.setState({
@@ -90,14 +71,6 @@ class App extends React.Component {
     )
   }
 };
-
-// var movies = [
-//   {title: 'Mean Girls'},
-//   {title: 'Hackers'},
-//   {title: 'The Grey'},
-//   {title: 'Sunshine'},
-//   {title: 'Ex Machina'},
-// ];
 
 export default App;
 

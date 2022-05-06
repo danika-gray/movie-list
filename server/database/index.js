@@ -1,11 +1,15 @@
+// DATABASE CONNECTOR - connects to SQL movies database
+
 const mysql = require("mysql2");
-const connection = mysql.createConnection({
+
+exports.connection = mysql.createConnection({
   host: "localhost",
   user: "root",
   database: "movies"
 });
 
-connection.connect((err) => {
-  if (err) throw err;
-  console.log("Connected!");
+exports.connection.connect((err) => {
+  if (err) {
+    console.log(err);
+  }
 });
