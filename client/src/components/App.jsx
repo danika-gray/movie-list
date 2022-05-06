@@ -22,11 +22,32 @@ class App extends React.Component {
     this.inputMovieList = this.inputMovieList.bind(this);
   }
 
-  organizeMovieList(text) {
+  // organizeMovieList(text) {
+  //   this.setState({
+  //     movieSearch: text // working
+  //   })
+  //   let organizedList = this.state.movies.slice();
+
+  //   organizedList = organizedList.filter(function(movie) {
+  //     let movieTitle = movie.title.toLowerCase();
+  //     text = text.toLowerCase();
+  //     if (movieTitle.indexOf(text) > -1) {
+  //       return true;
+  //     }
+  //     return false;
+  //   });
+  //   this.setState({
+  //     movies: organizedList
+  //   })
+  // }
+
+  organizeMovieList(event) {
+    event.preventDefault();
     this.setState({
-      movieSearch: text // working
+      movieSearch: Search.state.searchTitle;
     })
     let organizedList = this.state.movies.slice();
+    let text = Search.state.searchTitle;
 
     organizedList = organizedList.filter(function(movie) {
       let movieTitle = movie.title.toLowerCase();
@@ -42,14 +63,11 @@ class App extends React.Component {
   }
 
   inputMovieList(text) {
-    //console.log(text);
-
     let newMovie = {};
     newMovie.title = text;
 
     let newMovieList = this.state.movies.slice();
     newMovieList.push(newMovie);
-    //console.log(newMovieList);
 
     this.setState({
       movies: newMovieList
