@@ -22,18 +22,19 @@ class App extends React.Component {
     this.inputMovieList = this.inputMovieList.bind(this);
   }
 
-  organizeMovieList(event) {
-    event.preventDefault();
+  organizeMovieList(searchedTitle) {
+    //event.preventDefault();
     this.setState({
-      movieSearch: Search.state.searchTitle;
+      movieSearch: searchedTitle
     })
+    // copy movies array in this.state
     let organizedList = this.state.movies.slice();
-    let text = Search.state.searchTitle;
+    //let text = Search.state.searchTitle;
 
     organizedList = organizedList.filter(function(movie) {
       let movieTitle = movie.title.toLowerCase();
-      text = text.toLowerCase();
-      if (movieTitle.indexOf(text) > -1) {
+      searchedTitle = searchedTitle.toLowerCase();
+      if (movieTitle.indexOf(searchedTitle) > -1) {
         return true;
       }
       return false;

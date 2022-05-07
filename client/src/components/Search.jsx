@@ -17,19 +17,19 @@ class Search extends React.Component {
     });
   }
 
-  // handleSearchTitle(event) {
-  //   event.preventDefault();
-  //   this.props.organizeMovieList(this.state.searchTitle);
-  //   this.setState({
-  //     searchTitle: '',
-  //     submission: true,
-  //   })
-  // }
-  /* <form onSubmit={this.handleSearchTitle} > */
+  handleSearchTitle(event) {
+    event.preventDefault();
+    this.props.organizeMovieList(this.state.searchTitle);
+    this.setState({
+      searchTitle: '',
+      submission: true,
+    })
+  }
+  /* <form onSubmit={this.props.organizeMovieList} > */
 
   render() {
     return (
-      <form onSubmit={this.props.organizeMovieList} >
+      <form onSubmit={this.handleSearchTitle} >
         <label>
           <input type="text" placeholder="search..." value={this.state.searchTitle} onChange={this.handleChange} />
         </label>
