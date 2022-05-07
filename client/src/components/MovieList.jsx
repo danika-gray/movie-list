@@ -1,9 +1,9 @@
 import React from 'react';
 import MovieListItem from './MovieListItem.jsx';
 
-const MovieList = ({movies}) => {
+const MovieList = ({movies, hasBeenWatched}) => {
   const movieListItems = movies.map((movie) =>
-  <MovieListItem movie={movie} /> );
+  <MovieListItem movie={movie} hasBeenWatched={hasBeenWatched}/> );
 
   return (
     <div id="movie list">

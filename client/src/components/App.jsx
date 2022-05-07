@@ -7,11 +7,6 @@ import axios from 'axios';
 
 class App extends React.Component {
 
-  // put hardcoded movies back and insert them into the table
-  // before working on sending get and post requests for dynamic data
-
-  // once component mounts, send get request to SQL server to get the data
-  // can maybe ? test by commenting out movies and trying to get it from server?
   constructor(props) {
     super(props);
     this.state = {
@@ -26,16 +21,15 @@ class App extends React.Component {
     }
     this.organizeMovieList = this.organizeMovieList.bind(this);
     this.inputMovieList = this.inputMovieList.bind(this);
+    this.hasBeenWatched = this.hasBeenWatched.bind(this);
   }
 
   componentDidMount() {
     axios.get('http://localhost:4000/movies')
       .then(res => {
-
         let newData = res.data.map((movieObj) => {
           return { title: movieObj.movieName }
         })
-
         this.setState({
           movies: newData
         })
@@ -46,10 +40,6 @@ class App extends React.Component {
   }
 
   organizeMovieList(searchedTitle) {
-    // if someone searches a title we need to send a
-    // get request? to get titles that match the search
-    // from the database
-
     this.setState({
       movieSearch: searchedTitle
     })
@@ -69,7 +59,6 @@ class App extends React.Component {
   }
 
   inputMovieList(text) {
-    // when someone inputs a new title we need to send a post request
     let newMovie = {};
     newMovie.title = text;
 
@@ -80,11 +69,24 @@ class App extends React.Component {
       movies: newMovieList
     })
 
-    // send data for the newly added movie only
     axios.post(`http://localhost:4000/movies`, newMovie)
       .then(res => {
         console.log(res.data, 'res.data');
       })
+  }
+
+  hasBeenWatched(boolean) {
+    console.log('hasBeenWatched boolean in App.jsx:', boolean);
+    // if true add element to watched array
+      // send post request
+    // if false add element to not watched array
+      // send post request
+    // if element is found in watched and boolean has been updated
+      // splice element out
+      // send delete request?
+    // if element is found in not watched and boolean has been updated
+      // splice element out
+      // send delete request
   }
 
   render() {
@@ -97,7 +99,7 @@ class App extends React.Component {
           < InputMovie inputMovieList={this.inputMovieList}/>
         </div>
         <div id="movieList">
-          < MovieList movies={this.state.movies}/>
+          < MovieList movies={this.state.movies} hasBeenWatched={this.hasBeenWatched}/>
         </div>
       </div>
     )

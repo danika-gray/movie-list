@@ -23,6 +23,7 @@ app.listen(PORT, () => {
 
 // get and post
 app.get('/movies', (req, res) => {
+  console.log(req.body, 'req.body');
   controllers.get((err, movieTitlesData) => {
     if (err) {
       // fix later!
@@ -43,7 +44,7 @@ app.get('/movies', (req, res) => {
 
 app.post('/movies', (req, res) => {
   //console.log(req, 'req');
-  console.log(req.body.title, 'req.body.title'); //batman
+  //console.log(req.body.title, 'req.body.title'); //batman
 
   controllers.post(req.body.title, (err, title) => {
     if (err) {

@@ -4,7 +4,8 @@ class MovieListItem extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      button: 'not watched'
+      button: 'not watched',
+      hasBeenWatched: false
     }
     this.toggleButton = this.toggleButton.bind(this);
   }
@@ -12,13 +13,16 @@ class MovieListItem extends React.Component {
   toggleButton(event) {
     if (this.state.button === 'not watched') {
       this.setState({
-        button: 'watched'
+        button: 'watched',
+        hasBeenWatched: true
       })
     } else {
       this.setState({
-        button: 'not watched'
+        button: 'not watched',
+        hasBeenWatched: false
       })
     }
+    this.props.hasBeenWatched(this.state.hasBeenWatched);
   }
 
   render() {
