@@ -29,15 +29,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount');
     axios.get('http://localhost:4000/movies')
       .then(res => {
-        //console.log(res.data, 'res.data');
 
         let newData = res.data.map((movieObj) => {
           return { title: movieObj.movieName }
         })
-        //console.log(newData, 'newData');
 
         this.setState({
           movies: newData
@@ -49,6 +46,10 @@ class App extends React.Component {
   }
 
   organizeMovieList(searchedTitle) {
+    // if someone searches a title we need to send a
+    // get request? to get titles that match the search
+    // from the database
+
     this.setState({
       movieSearch: searchedTitle
     })
@@ -68,6 +69,7 @@ class App extends React.Component {
   }
 
   inputMovieList(text) {
+    // when someone inputs a new title we need to send a post request
     let newMovie = {};
     newMovie.title = text;
 
@@ -77,6 +79,12 @@ class App extends React.Component {
     this.setState({
       movies: newMovieList
     })
+
+    // send data for the newly added movie only
+    axios.post(`http://localhost:4000/movies`, newMovie)
+      .then(res => {
+        console.log(res.data, 'res.data');
+      })
   }
 
   render() {

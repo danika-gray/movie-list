@@ -5,7 +5,7 @@
 const models = require('../models');
 
 exports.get = function(callback) {
-  console.log('here in get in controllers');
+  //console.log('here in get in controllers');
 
   models.getMovieListData((err, data) => {
     if (err) {
@@ -19,14 +19,14 @@ exports.get = function(callback) {
   });
 };
 
-exports.post = function(data, callback) {
-  console.log('here in post in controllers');
-  models.postMovieData((err, data) => {
+exports.post = function(title, callback) {
+  console.log('here in post in controllers with title', title);
+  models.postMovieData(title, (err, data) => {
     if (err) {
       //handle err - fix!
       console.error(err);
     } else {
-      // format data into JSON?
+      console.log('added', data, 'to db');
       callback(null, data);
     }
   });
