@@ -6,11 +6,13 @@ const models = require('../models');
 
 exports.get = function(callback) {
   console.log('here in get in controllers');
+
   models.getMovieListData((err, data) => {
     if (err) {
       //handle err - fix!
       console.error(err);
     } else {
+      //console.log(data, 'back in controllers');
       // format data into JSON
       callback(null, data);
     }

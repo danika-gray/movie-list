@@ -17,11 +17,14 @@ app.get('/movies', (req, res) => {
       // fix later!
       console.error(err);
     } else {
-      res.statusCode(200).json(movieTitlesData);
+      console.log(movieTitlesData, 'app.get movie data back');
+
+      res.json(movieTitlesData);
+      //next();
     }
   })
 
-  res.send('Get request to movieList');
+  //res.send('Get request to movieList');
 });
 // get should retrive all movie data and return it to the client
 // get all movietitles from the database

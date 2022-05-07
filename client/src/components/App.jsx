@@ -3,9 +3,15 @@ import MovieList from './MovieList.jsx';
 import MovieListItem from './MovieListItem.jsx';
 import Search from './Search.jsx';
 import InputMovie from './Input.jsx';
+import axios from 'axios';
 
 class App extends React.Component {
 
+  // put hardcoded movies back and insert them into the table
+  // before working on sending get and post requests for dynamic data
+
+  // once component mounts, send get request to SQL server to get the data
+  // can maybe ? test by commenting out movies and trying to get it from server?
   constructor(props) {
     super(props);
     this.state = {
@@ -22,14 +28,31 @@ class App extends React.Component {
     this.inputMovieList = this.inputMovieList.bind(this);
   }
 
+  componentDidMount() {
+    console.log('componentDidMount');
+    axios.get('http://localhost:4000/movies')
+      .then(res => {
+        //console.log(res.data, 'res.data');
+
+        let newData = res.data.map((movieObj) => {
+          return { title: movieObj.movieName }
+        })
+        //console.log(newData, 'newData');
+
+        this.setState({
+          movies: newData
+        })
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
   organizeMovieList(searchedTitle) {
-    //event.preventDefault();
     this.setState({
       movieSearch: searchedTitle
     })
-    // copy movies array in this.state
     let organizedList = this.state.movies.slice();
-    //let text = Search.state.searchTitle;
 
     organizedList = organizedList.filter(function(movie) {
       let movieTitle = movie.title.toLowerCase();

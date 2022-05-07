@@ -13,9 +13,10 @@ exports.getMovieListData = function(callback) {
         if (err) {
           console.log('get request failed');
         } else {
-          console.log('results in getMovieListData', results);
+          // console.log('results in getMovieListData', results);
+          // console.log(callback, 'callback in getMovieListData');
           // before posting anything results is an empty array
-          callback(results);
+          callback(null, results);
         }
       }
     );
